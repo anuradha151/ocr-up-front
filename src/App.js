@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from "react";
-
+import Stack from 'react-bootstrap/Stack';
 import NavBar from './/components/NavBar.js';
 
 function App() {
@@ -15,9 +15,10 @@ function App() {
     <div className="App">
       <NavBar />
       <br />
-      <input type="file" onChange={handleChange} />
-      <img src={file} />
-
+      <Stack gap={2} className="col-md-5 mx-auto align-items-center">
+        <input type="file" onChange={handleChange} />
+        <img src={file} />
+      </Stack>
     </div>
   );
 }
