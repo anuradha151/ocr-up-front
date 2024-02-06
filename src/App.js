@@ -1,16 +1,14 @@
 import './App.css';
 import React, { useState } from "react";
-import Stack from 'react-bootstrap/Stack';
 import NavBar from './/components/NavBar.js';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
-import { ProgressBar , Alert, Card, CardBody, CardText, Container } from 'react-bootstrap';
+import { Alert, Card, CardBody, CardText, Container } from 'react-bootstrap';
 
 function App() {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState('');
-  const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -26,11 +24,7 @@ function App() {
       const response = await axios.post('http://localhost:8000/uploadfile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        },
-        onUploadProgress: (progressEvent) => {
-          const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          setUploadProgress(progress);
-        },
+        }
       });
 
       const textResponse = response.data.text;
@@ -65,10 +59,6 @@ function App() {
           <input type="file" onChange={handleFileChange} />
           <Button variant="primary" type="submit">Upload</Button>
         </form>
-        <br/>
-        {/* {uploadProgress > 0 && (
-        <ProgressBar animated now={uploadProgress} label={`${uploadProgress}%`} />
-      )} */}
         <br />
         {uploadStatus && (
           <Card>
