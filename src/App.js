@@ -4,6 +4,9 @@ import NavBar from './/components/NavBar.js';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { Alert, Card, CardBody, CardText, Container } from 'react-bootstrap';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login.js';
+import Signup from './pages/Signup.js';
 
 function App() {
 
@@ -52,24 +55,12 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
-      <br />
-      <Container>
-        <form onSubmit={handleSubmit}>
-          <input type="file" onChange={handleFileChange} />
-          <Button variant="primary" type="submit">Upload</Button>
-        </form>
-        <br />
-        {uploadStatus && (
-          <Card>
-            <CardBody>
-              <CardText className="mb-2">Image Text</CardText>
-              {/* Display data using appropriate Bootstrap components */}
-              {displayData(uploadStatus)}
-            </CardBody>
-          </Card>
-        )}
-      </Container>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
