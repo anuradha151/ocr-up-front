@@ -2,8 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import NavBar from './/components/NavBar.js';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
-import { Alert, Card, CardBody, CardText, Container } from 'react-bootstrap';
+import { Alert, Button, Card, CardBody, CardText, Container } from 'react-bootstrap';
 
 function App() {
 
@@ -21,7 +20,7 @@ function App() {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await axios.post('http://54.197.77.178/uploadfile', formData, {
+      const response = await axios.post('http://localhost:8000/uploadfile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }
@@ -59,6 +58,10 @@ function App() {
           <input type="file" onChange={handleFileChange} />
           <Button variant="primary" type="submit">Upload</Button>
         </form>
+        <br />
+        {selectedFile &&
+          <img src={URL.createObjectURL(selectedFile)} />
+        }
         <br />
         {uploadStatus && (
           <Card>
