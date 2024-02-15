@@ -26,7 +26,7 @@ function Login() {
                         <button className="btn btn-primary">Sign In</button>
                     </div>
                     <p className="text-end mt-2">
-                        Forgot <a href="">Password? </a> <Link to="/signup" className="ms-2" href="">Sign Up</Link>
+                        Forgot <a href="">Password? </a> <Link to="" className="ms-2" href="">Sign Up</Link>
                     </p>
                 </form>
             </div>
